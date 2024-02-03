@@ -1,0 +1,40 @@
+{%- comment -%}
+<!-- 
+{% include components/table.html
+  pre=""
+  table=""
+  body=""
+  caption=""
+  button_link=""
+  button_text=""
+  stretch="true|false"
+%}
+-->
+{%- endcomment -%}
+
+{%- assign stretch = "" -%}
+{%- if include.stretch == false -%}
+  {%- assign stretch = "style='display: inline-block;'" -%}
+{%- endif -%}
+
+<div {{stretch}}>
+  {%- if include.pre -%}
+    {{include.pre | markdownify}}
+  {%- endif -%}
+  {%- if include.table -%}
+    <div class="table-responsive card">
+      {{include.table | markdownify}}
+    </div>
+  {%- endif -%}
+  {%- if include.body -%}
+    {{include.body | markdownify}}
+  {%- endif -%}
+  {%- if include.caption -%}
+    <div class="small">
+      {{include.caption | markdownify}}
+    </div>
+  {%- endif -%}
+  {%- if include.button_link and include.button_text -%}
+    <a class="btn btn-primary" href="{{include.button_link}}" role="button">{{include.button_text}}</a>
+  {%- endif -%}
+</div>

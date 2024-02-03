@@ -1,0 +1,57 @@
+{%- comment -%}
+<!-- 
+{% include components/details-post.html
+  title=""
+  link=""
+  date=""
+  project_id=""
+  cat=""
+  body=""
+  open="true|false"
+  disabled="true|false"
+%}
+-->
+{%- endcomment -%}
+
+
+{%- assign filtered = "" -%}
+{%- if include.filtered -%}
+  {%- assign filtered = "filtered d-none" -%}
+{%- endif -%}
+
+
+<div id="{{include.id}}" class="card card-post {{filtered}}">
+  <div class="card-body pb-0">
+    {%- assign open = "" -%}
+    {%- if include.open -%}
+      {%- assign open = "open" -%}
+    {%- endif -%}
+    {%- assign disabled = "" -%}
+    {%- if include.disabled -%}
+      {%- assign disabled = "disabled" -%}
+    {%- endif -%}
+    {%- capture title -%}
+      {{include.cat | badge}} {{include.title | escape}}
+    {%- endcapture -%}
+    <details {{open}} {{disabled}}>
+      <summary class="mb-3">
+        {{title}}
+        <span class="arrowicon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+      </summary>
+      <hr>
+      <div class="pb-1">
+        <div>
+          <p>Published: {{include.date | date: "%b %d, %Y"}}</p>
+          {%- if include.link -%}
+            <a class="btn btn-primary d-inline me-2" href="{{include.link}}" role="button" target="_blank">View in forum →</a>
+          {%- endif -%}
+          <a class="btn btn-outline-danger d-inline" role="button" target="_blank" onclick="removePost('{{include.id}}', '{{include.project_id}}')">Remove</a>
+        </div>
+        <hr>
+        <div class="post-body">
+          {{include.body | replace: "<img", "<img loading='lazy'"}}
+        </div>
+      </div>
+    </details>
+  </div>
+</div>

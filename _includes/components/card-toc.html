@@ -1,0 +1,47 @@
+{%- comment -%}
+<!-- 
+{% include components/card-toc.html
+  headers=""
+%}
+-->
+{%- endcomment -%}
+
+<style type="text/css">
+  /*.btn {
+    border-radius: 0.75rem;
+    color: rgb(98, 159, 244);
+    background-color: rgba(98, 159, 244, 0.1);
+  }*/
+  .toc p {
+    overflow-x: scroll;
+    -ms-overflow-style: none;  /* Internet Explorer 10+ */
+    scrollbar-width: none;  /* Firefox */
+  }
+  .toc p::-webkit-scrollbar { 
+    display: none;  /* Safari and Chrome */
+  }
+
+  .toc a {
+    height: 2rem;
+    white-space: nowrap;
+  }
+  .toc a {
+    border-radius: 0.75rem;
+    color: rgb(98, 159, 244);
+    background-color: rgba(98, 159, 244, 0.1);
+  }
+  .toc a:hover,
+  .toc .btn:hover {
+    background-color: var(--brand-accent-blue) !important;
+  }
+</style>
+
+
+<div class="toc">
+  <p class="d-flex no-wrap">
+    {%- for item in include.headers -%}
+      {%- assign header = "" | append: item -%}
+      <a href="{{header | stripspecialchars | anchor}}" class="btn me-1 mb-2">{{item}}</a>
+    {%- endfor -%}
+  </p>
+</div>

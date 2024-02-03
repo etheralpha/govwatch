@@ -1,0 +1,121 @@
+---
+layout: default
+---
+
+
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="forums-tab" data-bs-toggle="tab" data-bs-target="#forums" type="button" role="tab" aria-controls="forums" aria-selected="true">Forums</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="proposals-tab" data-bs-toggle="tab" data-bs-target="#proposals" type="button" role="tab" aria-controls="proposals" aria-selected="false">Proposals</button>
+  </li>
+</ul>
+
+<!-- Tab panes -->
+<div class="tab-content">
+  <p id="loading">
+    loading...
+  </p>
+  <div class="tab-pane active d-none" id="forums" role="tabpanel" aria-labelledby="forums-tab" tabindex="0">
+    {%- capture forum_settings -%}
+      <div class="card p-2">
+        <div class="form-check mt-1">
+          <input class="form-check-input" type="checkbox" value="" id="showFilteredPosts" onclick="showFilteredPosts(this.checked)">
+          <label class="form-check-label" for="showFilteredPosts">
+            {{'Show filtered posts 
+            (<span class="inline-dot bg-warning"></span>)' | tooltip: "Filtered posts are posts hidden due to blacklisted categories, users, or keywords."}}
+          </label>
+        </div>
+        <div class="form-check mt-1">
+          <input class="form-check-input" type="checkbox" value="" id="showRemovedPosts" onclick="showRemovedPosts(this.checked)">
+          <label class="form-check-label" for="showRemovedPosts">
+            {{'Show removed posts 
+            (<span class="inline-dot bg-danger"></span>)' | tooltip: "Removed posts are posts you have opened and selected ‛Remove’."}}
+          </label>
+        </div>
+        <div class="form-check mt-1">
+          <input class="form-check-input" type="checkbox" value="" id="expandCategories" onclick="expandCategories(this.checked)">
+          <label class="form-check-label" for="expandCategories">
+            Expand categories
+          </label>
+        </div>
+      </div>
+    {%- endcapture -%}
+    {% include components/details.html
+      id="forumSettings"
+      title="Settings"
+      body=forum_settings
+      open=false
+    %}
+    <hr>
+    {%- assign all_categories = "" -%}
+    {%- for item in site.data.watchlist -%}
+      {%- if item.forum and item.status == "live" -%}
+        {%- if item.category -%}
+          {%- assign all_categories = all_categories | append: "," | append: item.category -%}
+        {%- endif -%}
+      {%- endif -%}
+    {%- endfor -%}
+    {%- assign all_categories = all_categories | remove_first: "," -%}
+    {%- assign all_categories = all_categories | split: "," | uniq | sort_natural -%}
+    <!--  -->
+    {%- for category in all_categories -%}
+      {%- assign category_size = 0 -%}
+      {%- capture projects -%}
+        {%- for project in site.data.watchlist -%}
+          {%- if project.forum and project.status == "live" -%}
+            {%- assign file_name = project.id | append: "-processed" -%}
+            {%- assign data = site.data.posts-processed[file_name] -%}
+            {%- assign latest_posts = data.rss.channel.item -%}
+            {%- if project.category == category and latest_posts -%}
+              {%- assign category_size = category_size | plus: 1 -%}
+              {%- capture content -%}
+                {%- for post in latest_posts -%}
+                  {%- assign post_id = post.guid["#text"] -%}
+                  {% include components/details-post.html
+                    id=post_id
+                    title=post.title
+                    link=post.link
+                    date=post.pubDate
+                    project_id=project.id
+                    cat=post.category
+                    body=post.description
+                    filtered=post.filter
+                    open=false
+                  %}
+                {%- endfor -%}
+              {%- endcapture -%}
+              {%- capture project_title -%}
+                {{project.name}} <span id="{{project.id}}-count" class="ms-1"></span>
+              {%- endcapture -%}
+              {% include components/details.html
+                id=project.id
+                title=project_title
+                body=content
+                open=false
+              %}
+            {%- endif -%}
+          {%- endif -%}
+        {%- endfor -%}
+        <!--  -->
+      {%- endcapture -%}
+      {%- capture category_title -%}
+        {{category}} ({{category_size}})
+      {%- endcapture -%}
+      {%- assign category_id = category | downcase -%}
+      {% include components/details.html
+        id=category_id
+        classes="category"
+        title=category_title
+        body=projects
+        open=false
+      %}
+    {%- endfor -%}
+  </div>
+  <div class="tab-pane d-none" id="proposals" role="tabpanel" aria-labelledby="proposals-tab" tabindex="0">
+    🚧 under construction 🚧
+  </div>
+</div>
+
+

@@ -1,0 +1,139 @@
+{%- comment -%}
+<!-- 
+{% include components/card-alert.html
+  title=""
+  body=""
+  type="info|primary|secondary|success|danger|warning|light|dark"
+  button_text=""
+  button_link=""
+  open="true|false"
+  details="true|false"
+%}
+-->
+{%- endcomment -%}
+
+{%- assign type = "alert-info" -%}
+{%- assign icon = "" -%}
+{%- if include.type == "primary" -%}
+  {%- assign type = "alert-primary" -%}
+  {%- assign icon = site.data.icons.info_circle_fill -%}
+{%- endif -%}
+{%- if include.type == "secondary" -%}
+  {%- assign type = "alert-secondary" -%}
+{%- endif -%}
+{%- if include.type == "success" -%}
+  {%- assign type = "alert-success" -%}
+  {%- assign icon = site.data.icons.check_circle_fill -%}
+{%- endif -%}
+{%- if include.type == "danger" -%}
+  {%- assign type = "alert-danger" -%}
+  {%- assign icon = site.data.icons.exclamation_triangle_fill -%}
+{%- endif -%}
+{%- if include.type == "warning" -%}
+  {%- assign type = "alert-warning" -%}
+  {%- assign icon = site.data.icons.exclamation_triangle_fill -%}
+{%- endif -%}
+{%- if include.type == "info" -%}
+  {%- assign type = "alert-info" -%}
+  {%- assign icon = site.data.icons.info_circle_fill -%}
+{%- endif -%}
+{%- if include.type == "light" -%}
+  {%- assign type = "alert-light" -%}
+{%- endif -%}
+{%- if include.type == "dark" -%}
+  {%- assign type = "alert-dark" -%}
+{%- endif -%}
+
+{%- if include.icon == false -%}
+  {%- assign icon = "" -%}
+{%- endif -%}
+
+
+<style type="text/css">
+  .alert-details details {
+    margin-top: -0.2rem;
+    margin-bottom: -0.2rem;
+  }
+  .alert-details details summary {
+    font-weight: 400;
+    padding-top: 3.5px;
+    padding-bottom: 3px;
+  }
+  .alert-details details[open] summary > .arrowicon {
+    
+  }
+  .alert-details hr {
+    margin-top: 13px;
+    color: var(--bs-{{include.type}}-text-emphasis);
+  }
+  .alert-details .alert-link {
+    font-weight: inherit;
+    text-decoration: none;
+  }
+  .alert-details .alert-link .arrowicon {
+    margin-top: -0.1rem;
+    margin-left: auto;
+  }
+  .alert-details .alert-link p {
+    margin-bottom: 0;
+  }
+  .alert-details .alert-link .btn {
+    margin-left: auto;
+  }
+  .alert-details .btn {
+    color: var(--bs-{{include.type}}-bg-subtle);
+    background-color: var(--bs-{{include.type}}-text-emphasis);
+  }
+  .alert-details .btn:hover {
+    border-color: var(--bs-{{include.type}}-border-subtle);
+  }
+</style>
+
+
+{%- if include.body or include.button_link -%}
+<div class="alert alert-details {{type}}" role="alert">
+  {%- if include.open -%}
+    {%- assign open = "open" -%}
+  {%- endif -%}
+  <details {{open}}>
+    <summary>
+      {{icon}}
+      {{include.title | markdownify}}
+      <span class="arrowicon"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span>
+    </summary>
+    <hr>
+    <div class="pb-2">
+      {%- if include.body -%}
+        {{include.body | markdownify}}
+      {%- endif -%}
+      {%- if include.button_link -%}
+        {%- assign button_text = "Learn More" -%}
+        {%- if include.button_text -%}
+          {%- assign button_text = include.button_text -%}
+        {%- endif -%}
+        <a class="btn" href="{{include.button_link}}" role="button">{{include.button_text}}</a>
+      {%- endif -%}
+    </div>
+  </details>
+</div>
+{%- comment -%}
+{%- elsif include.button_link -%}
+  {%- assign button_text = "Take Action" -%}
+  {%- if include.button_text -%}
+    {%- assign button_text = include.button_text -%}
+  {%- endif -%}
+  <div class="alert-details"><a class="alert-link" href="{{include.button_link}}">
+    <div class="alert {{type}} d-flex" role="alert">
+    {{icon}}
+    {{include.title | markdownify | replace: "<p>", "" | replace: "</p>", "" | addclass: "my-auto"}}
+    <!-- <span class="btn" role="button">{{button_text}}</span> -->
+    <span class="arrowicon my-auto">Take Action <span class=""><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></span></span>
+  </div>
+  </a></div>
+{%- endcomment -%}
+{%- else -%}
+  <div class="alert {{type}} d-flex" role="alert">
+    {{icon}}
+    {{include.title | markdownify}}
+  </div>
+{%- endif -%}

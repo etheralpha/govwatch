@@ -1,0 +1,257 @@
+# project-specific settings are in addition to general settings
+# blacklisted category overrides whitelisted user/keyword
+# blacklisted user overrides whitelisted category/keyword
+# whitelisted user overrides blacklisted keyword
+# blacklisted keyword overrides whitelisted category
+
+
+# Template to copy for project entries
+    # keyword_blacklist: 
+    # keyword_whitelist:
+    # category_blacklist:
+    # category_whitelist:
+    # author_blacklist:
+    # author_whitelist:
+
+general_settings:
+  keyword_blacklist:
+    - "automated post"
+  category_blacklist:
+    - "Announcements"
+    - "Miscellaneous"
+    - "Uncategorized"
+    - "Community"
+    - "Support"
+  author_blacklist:
+  author_whitelist:
+    - "vitalik"
+project_settings: 
+  aave:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Liquidation"
+      - "Development"
+      - "Smart Contract"
+      - "Other"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  alchemix:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  arbitrum:
+    keyword_blacklist:
+      - "[WITHDRAWN]"
+      - "Communication Thread"
+    keyword_whitelist:
+    category_blacklist:
+      - "Biweekly Updates (STIP)"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  curve:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Gauge Proposals"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  diva:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  eigen-layer:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  ens:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "🪳 Bug Reports"
+      - "Newsletter"
+      - "ResourceRequests/Grant"
+      - "📆 Events"
+      - "Community"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  ethereum-magicians:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Happenings"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  ethereum-research:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  etherfi:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  frax:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Meta"
+      - "Token Swap / Seed funding"
+      - "Gauges"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  gitcoin:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "👋 News and Community"
+      - "PGN"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  giveth:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "DAO Ops"
+      - "GIVeconomy"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  hop:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "🪳Bugs & Feedback"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  lido:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  maker:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "New to MakerDAO"
+      - "Spark SubDAO"
+      - "Core Units TechOps"
+      - 
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  octant:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  optimism:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Citizen Updates"
+      - "Grant Misuse Reports"
+      - "🏹 Mission Requests"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  polygon:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Polygon CDK"
+      - "Polygon Testnets"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  rocket-pool:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  scroll:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  stakewise:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  stargate:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  starknet:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  swell:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  synapse:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  synthetix:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:
+  uniswap:
+    keyword_blacklist:
+    keyword_whitelist:
+    category_blacklist:
+      - "Site Feedback"
+      - "Delegation Pitch"
+    category_whitelist:
+    author_blacklist:
+    author_whitelist:

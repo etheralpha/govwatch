@@ -1,0 +1,31 @@
+# Read about configuration here: https://jekyllrb.com/docs/configuration/options/
+title: GovWatch
+description: A tool to monitor governance posts and proposals.
+keywords: ethereum, decentralization, governance, forum, proposal
+url: https://govwatch.ethereumdefensealliance.com
+permalink: pretty # Do not change this, it will break all links
+timezone: America/New_York
+markdown: kramdown
+livereload: true
+port: 4400
+environment: production
+
+# Plugins
+plugins:
+  - jekyll_include_plugin # https://github.com/flant/jekyll_include_plugin
+  - jekyll-redirect-from # https://github.com/jekyll/jekyll-redirect-from
+redirect_from: # jekyll-redirect-from
+  json: false
+
+# Global variables
+
+
+# Toast
+enable_toast: false
+toast_msg_id: 1 # must increment when creating a new message
+toast_title: EDA's Gitcoin grant is live!
+toast_msg: This round runs through August 29th. Please consider donating - EDA is grant-funded and all funds go towards initiatives that help improve the network." # Best when under 100 characters
+toast_link: https://ethereumdefencealliance.com # Optional, leave blank to omit
+toast_link_text: Donate
+# August 29, 23:59:59 GMT+0
+toast_expiration: 30000000000 # epoch time in seconds
